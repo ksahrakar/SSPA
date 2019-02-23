@@ -1,0 +1,34 @@
+.box-location {
+    border: black 3px solid;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    background-color:rgb(204, 224, 231);
+    color:black;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+.table-header {
+    font-weight: bold;
+}
+
+th {
+    font-weight: normal;  
+}
+
+.table td, .table th {
+    padding: .25rem;
+}
+
+.kennel  {
+max-height: 600px;
+overflow-y: scroll;
+}
+
+.staffBox {
+    background-color: rgb(241,217,179);
+}

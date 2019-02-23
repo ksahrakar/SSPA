@@ -1,0 +1,79 @@
+.buttonSpace{
+    margin-top:10px;
+    float:right;
+}
+
+.newDogBtn,.allDogsBtn,.newStaffBtn,.allStaffBtn{
+    margin-right:10px;
+}
+
+.cell{
+    align-content: center;
+}
+
+.form-check {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.cell {
+    padding-right: 20px;
+}
+
+.form-control {
+    width: auto;
+}
+
+.socEvent {
+    margin-right:5px;
+}
+
+.headings {
+    font-weight: bold;
+}
+
+.headings{
+    font-weight: bold;
+}
+
+.socTableCell{
+    background-color:lightpink;
+    width:80px
+}
+
+.navbarTxt{
+    color:lightgray
+}
+.navbar-expand { 
+    justify-content: center;
+}
+
+
+.jumbo{
+    height:80px;
+    width:80px;
+    padding:5px;
+}
+
+.headerTxt{
+    color: darkslategray;
+    font-size:24px;
+}
+
+.tron{
+    background-color: white;
+    text-align: center;
+}
+
+
+.introLogin{
+    color:white
+}
+
+a {
+    color:rgb(14, 166, 197)
+}
+
+.btn{
+    border-color:white;
+}
