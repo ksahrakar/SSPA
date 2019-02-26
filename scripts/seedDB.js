@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../models");
-//const moment= require ("moment");
+const moment = require ("moment");
+
 
 // This file empties the Dogs collection and inserts the 5 dogs below
 
@@ -38,8 +39,9 @@ const dogSeed = [
 
       }
     ],
-    checkout: new Date('2019/02/16 10:30'),
-    location: "Kennel"
+    checkout: "2019/02/16 10:30",
+    location: "Kennel",
+    socTime:[{date:"2/16/2019",minutes:50},{date:"2/17/2019",minutes:40},{date:"2/18/2019", minutes:55},{date:"2/19/2019",minutes:32},{date:"2/20/2019",minutes:43},{date:"2/21/2019",minutes:49},{date:"2/22/2019",minutes:56},{date:"2/23/2019",minutes:41}]
   },
   {
     name: "Harvey",
@@ -70,7 +72,8 @@ const dogSeed = [
       }
     ],
     checkout: new Date('2019/02/16 10:30'),
-    location: "Kennel"
+    location: "Kennel",
+    socTime:[{date:'2/16/2019',minutes:77},{date:'2/17/2019',minutes:67},{date:'2/18/2019', minutes:82},{date:'2/19/2019',minutes:70},{date:'2/20/2019',minutes:59},{date:'2/21/2019',minutes:85},{date:'2/22/2019',minutes:90},{date:'2/23/2019',minutes:70}]
   },
   {
     name: "Raisinet",
@@ -101,7 +104,8 @@ const dogSeed = [
       }
     ],
     checkout: new Date('2019/02/16 10:30'),
-    location: "Kennel"
+    location: "Kennel",
+    socTime:[{date:'2/16/2019',minutes:50},{date:'2/17/2019',minutes:40},{date:'2/18/2019', minutes:41},{date:'2/19/2019',minutes:55},{date:'2/20/2019',minutes:60},{date:'2/21/2019',minutes:37},{date:'2/22/2019',minutes:50},{date:'2/23/2019',minutes:42}]
   },
   {
     name: "Benson",
@@ -131,7 +135,8 @@ const dogSeed = [
       }
     ],
     checkout: new Date('2019/02/16 10:30'),
-    location: "Kennel"
+    location: "Kennel",
+    socTime:[{date:'2/16/2019',minutes:70},{date:'2/17/2019',minutes:79},{date:'2/18/2019', minutes:55},{date:'2/19/2019',minutes:87},{date:'2/20/2019',minutes:59},{date:'2/21/2019',minutes:78},{date:'2/22/2019',minutes:86},{date:'2/23/2019',minutes:65}]
   },
   {
     name: "Yuki",
@@ -171,7 +176,8 @@ const dogSeed = [
       }
     ],
     checkout: new Date('2019/02/16 14:20'),
-    location: "Kennel"
+    location: "Kennel",
+    socTime:[{date:'2/16/2019',minutes:56},{date:'2/17/2019',minutes:80},{date:'2/18/2019', minutes:66},{date:'2/19/2019',minutes:72},{date:'2/20/2019',minutes:56},{date:'2/21/2019',minutes:73},{date:'2/22/2019',minutes:65},{date:'2/23/2019',minutes:77}]
   },
 ];
 

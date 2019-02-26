@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import API from "../../utils/API";
 import { Redirect } from 'react-router';
-
+import Form from "react-bootstrap/Form";
 
 class DogForm extends Component {
 
@@ -177,11 +177,22 @@ class DogForm extends Component {
                     </div>
                     <input name="description" value={this.state.description} onChange={this.handleInputChange} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
                 </div>
-                <div className="input-group input-group-sm mb-3">
+                <div className="input-group mb-3">
                     <div className="input-group-prepend">
-                        <span className="input-group-text" id="inputGroup-sizing-sm">Playstyle</span>
+                        <label className="input-group-text" >Playstyle</label>
                     </div>
-                    <input name="playStyle" value={this.state.playStyle} onChange={this.handleInputChange} type="text" className="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" />
+                    <Form.Control as="select" name="playStyle" onChange={this.handleInputChange}>
+                        <option value="">{this.state.playStyle}</option>
+                        <option value="PG-RR" >Playgroup - Rough/Rowdy</option>
+                        <option value="PG-GentleRR" >Playgroup - Gentle Rough/Rowdy</option>
+                        <option value="PG-GD" >Playgroup - Gentle/Dainty</option>
+                        <option value="W-PG" >Walk/Playgroup</option>
+                        <option value="W1" >Walk Only- Level 1</option>
+                        <option value="W2" >Walk Only- Level 2</option>
+                        <option value="W3" >Walk Only- Level 3</option>
+                        <option value="W4" >Walk Only- Level 4</option>
+                        <option value="KV" >Kennel Visit Only</option>
+                    </Form.Control>
                 </div>
                 <div className="input-group input-group-sm mb-3">
                     <div className="input-group-prepend">

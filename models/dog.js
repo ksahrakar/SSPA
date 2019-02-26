@@ -58,6 +58,18 @@ const dogSchema = new Schema({
             }
         }
     ],
+    socTime:[
+        {
+            date:{
+                type: Date
+            }
+        },
+        {
+            minutes:{
+                type: Number
+            }
+        }
+    ]
 });
 
 const Dog = mongoose.model("Dog", dogSchema);

@@ -7,7 +7,8 @@ import Button from "react-bootstrap/Button";
 class Locations extends Component {
     state = {
         dogs: [],
-        staff: []
+        staff: [],
+        tok:0
     }
 
 
@@ -89,8 +90,8 @@ class Locations extends Component {
                 checkedOut = new Date(this.getCheckout(dog));
             }
         }
-
         var diff = Math.floor(Math.abs(new Date() - new Date(checkedOut)) / 60000);
+        this.setState({tok:diff});
         var minutes = socPlanTime - diff;
 
         if (minutes > 0) {
@@ -104,12 +105,10 @@ class Locations extends Component {
     overallProgress = (soc) => {
         let notdone = [];
         for (let i = 0; i < soc.length; i++) {
-
             if (soc[i].done !== true) {
                 notdone.push(soc[i]);
             }
         }
-
         if (notdone.length <= 0) {
             return <span className="badge badge-success">✓</span>
         } else {
