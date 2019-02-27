@@ -2,16 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 //const moment = require("moment");
 
-function resetSocDone () {
-    for (i=0;i<socialization.length;i++){
-        now=new Date();
-        lastSoc = new Date(this.checkout);
-        if (now.getDay()!==lastSoc.getDay()){
-            this.socialization[i].done=false;
-        }
-    }
-}
-
 const dogSchema = new Schema({
     name: String,
     pic: String,

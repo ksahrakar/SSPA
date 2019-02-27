@@ -91,7 +91,7 @@ class Locations extends Component {
             }
         }
         var diff = Math.floor(Math.abs(new Date() - new Date(checkedOut)) / 60000);
-        this.setState({tok:diff});
+        //this.setState({tok:diff});
         var minutes = socPlanTime - diff;
 
         if (minutes > 0) {

@@ -88,10 +88,21 @@ class DogWidget extends Component {
         }
     }
 
+    updateSocTime = (tok,dog)=>{
+        if (moment(dog.socTime[0].date)===moment(new Date(),"MM-DD-YYYY")){
+            dog.socTime[0].tok=dog.socTime[0].tok+tok;
+        } else {
+            let newDay=moment(new Date(),"MM-DD-YYYY");
+            let newSize = dog.socTime.unshift({newDay,tok});
+            if (newSize>7){dog.socTime.pop()};
+        }
+    }
+
     kennelReturn = (dog) => {
         let returnDog = {
             index: this.state.checkoutActivity,
             id: dog._id,
+            tok:this.state.tok
         }
         let returnStaff = {
             id: this.state.staffid
