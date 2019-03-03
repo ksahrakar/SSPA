@@ -12,7 +12,8 @@ class DogWidget extends Component {
         super(props)
         this.state = {
             dog: {
-                socialization: []
+                socialization: [],
+                socTime:[]
             },
             modalShow: false,
             modalInfo: {
@@ -25,6 +26,7 @@ class DogWidget extends Component {
             checkoutActivity: "",
             staffid: sessionStorage.id,
             permissions: null
+
         };
     }
 
@@ -88,14 +90,23 @@ class DogWidget extends Component {
                 })
             }
         }
+    }
 
-
+    updateSocTime = (tok,dog)=>{
+        if (moment(dog.socTime[0].date)===moment(new Date(),"MM-DD-YYYY")){
+            dog.socTime[0].tok=dog.socTime[0].tok+tok;
+        } else {
+            let newDay=moment(new Date(),"MM-DD-YYYY");
+            let newSize = dog.socTime.unshift({newDay,tok});
+            if (newSize>7){dog.socTime.pop()};
+        }
     }
 
     kennelReturn = (dog) => {
         let returnDog = {
             index: this.state.checkoutActivity,
             id: dog._id,
+            tok:this.state.tok
         }
         let returnStaff = {
             id: this.state.staffid
@@ -105,7 +116,6 @@ class DogWidget extends Component {
         API.socDone2(returnDog).then().catch();
         API.returnStaff(returnStaff).then().catch();
         this.getDog()
-
     }
 
     render() {
@@ -175,6 +185,12 @@ class DogWidget extends Component {
                                 <h5 name="description" className="notes">{moment(this.state.dog.intakeDate).format("M-D-YYYY")}</h5>
                             </div>
                             <div>
+                                <h3 name="descriptionLabel" className="labels">Playstyle:</h3>
+                            </div>
+                            <div>
+                                <h5 name="description" className="notes">{this.state.dog.playStyle}</h5>
+                            </div>
+                            <div>
                                 <h3 name="descriptionLabel" className="labels">Description:</h3>
                             </div>
                             <div>
@@ -207,6 +223,24 @@ class DogWidget extends Component {
                                         <td className="cell">{soc.duration}</td>
                                         <td className="cell">{soc.ampm}</td>
                                         <td className="cell">{this.checkprogress(soc, i)}</td>
+                                    </tr>
+                                </tbody>
+                            )}
+                        </table>
+                        <hr/>
+                        <h3 name="socLabel" className="labels">Time Out Of Kennel</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="col" className="cell">Date</th>
+                                    <th scope="col" className="cell">Minutes</th>
+                                </tr>
+                            </thead>
+                            {this.state.dog.socTime.map((socTime, idx) =>
+                                <tbody key={idx}>
+                                    <tr className="table-active">
+                                        <td className="cell">{moment(socTime.date).format("M-D-YYYY")}</td>
+                                        <td className="cell">{socTime.minutes}</td>
                                     </tr>
                                 </tbody>
                             )}

@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 //const moment = require("moment");
 
-
 const dogSchema = new Schema({
     name: String,
     pic: String,
@@ -51,6 +50,18 @@ const dogSchema = new Schema({
             }
         }
     ],
+    socTime:[
+        {
+            date:{
+                type: Date
+            }
+        },
+        {
+            minutes:{
+                type: Number
+            }
+        }
+    ]
 });
 
 const Dog = mongoose.model("Dog", dogSchema);
