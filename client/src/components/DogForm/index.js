@@ -107,7 +107,6 @@ class DogForm extends Component {
     };
 
     handleDeleteSocialization = (index) => {
-
         var newsoc = [...this.state.socialization];
         if (index !== -1) {
             newsoc.splice(index, 1);
@@ -187,10 +186,10 @@ class DogForm extends Component {
                         <option value="PG-GentleRR" >Playgroup - Gentle Rough/Rowdy</option>
                         <option value="PG-GD" >Playgroup - Gentle/Dainty</option>
                         <option value="W-PG" >Walk/Playgroup</option>
-                        <option value="W1" >Walk Only- Level 1</option>
-                        <option value="W2" >Walk Only- Level 2</option>
-                        <option value="W3" >Walk Only- Level 3</option>
-                        <option value="W4" >Walk Only- Level 4</option>
+                        <option value="W-1" >Walk Only- Level 1</option>
+                        <option value="W-2" >Walk Only- Level 2</option>
+                        <option value="W-3" >Walk Only- Level 3</option>
+                        <option value="W-4" >Walk Only- Level 4</option>
                         <option value="KV" >Kennel Visit Only</option>
                     </Form.Control>
                 </div>
