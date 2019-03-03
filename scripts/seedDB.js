@@ -192,7 +192,7 @@ const staffSeed = [
     location: "",
     password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: true,
-    admin: true
+    permissions: "admin"
   },
   {
     name: "Robert",
@@ -204,7 +204,7 @@ const staffSeed = [
     location: "",
     password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: true,
-    admin: true
+    permissions: "user"
   },
   {
     name: "Sandi",
@@ -216,7 +216,7 @@ const staffSeed = [
     location: "",
     password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: true,
-    admin: true
+    permissions: "user"
   },
   {
     name: "Caroline",
@@ -228,7 +228,7 @@ const staffSeed = [
     location: "",
     password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: false,
-    admin: false
+    permissions: "manager"
   },
   {
     name: "SuperUser",
@@ -240,7 +240,7 @@ const staffSeed = [
     location: "",
     password: "$2a$10$p5fT3TKLqWhAkyWZFjO/Iuk0z78v.bZkDHchOTvcdk8kUkUnGy3pC",
     active: true,
-    admin: true
+    permissions: "admin"
   },
 ];
 

@@ -12,6 +12,8 @@ const dogSchema = new Schema({
     },
     description: String,
     playStyle: String,
+    walkLevel: Number,
+    playStyleLevel: String,
     active: {
         type: Boolean,
         default: true

@@ -22,11 +22,15 @@ class DogListWidget extends Component {
                 socialization: []
             },
             inactive: false,
+            permissions: null
         };
     }
 
     componentDidMount() {
         this.findalldogs();
+        this.setState({
+            permissions: this.props.permissions
+        })
     };
 
     findalldogs = () => {
@@ -149,26 +153,23 @@ class DogListWidget extends Component {
         const isInactive = this.state.inactive;
         var button;
         if (isInactive) {
-            button = 
-                <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>
+            button = <Button style={{ backgroundColor: 'rgb(14,166,197)', marginBottom: '10px' }} className="btn btn-lg" variant="primary" onClick={() => this.findalldogs()}>View Active</Button>;
         } else {
-            button = 
-                <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
+            button = <Button style={{ backgroundColor: 'rgb(14,166,197)', marginBottom: '10px' }} className="btn btn-lg" variant="primary" onClick={() => this.findInactive()}>View Inactive</Button>;
+
         }
 
         let newButtons;
-        let isAdmin = sessionStorage.admin;
-        if (isAdmin==="true"){
+        let permissions = this.state.permissions;
+        if (permissions !== "user") {
             newButtons = (
-            <div className="buttonSpace">
-            {ddbutton}
-            <Button style={{backgroundColor:'rgb(14,166,197)',marginBottom:'10px'}} className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>New Dog</Button>
-            <AddEditDog show={this.state.modalShow2} onHide={modalClose2}/>
-            {button}
-            </div>)
+                <div className="buttonSpace">
+                    <Button style={{ backgroundColor: 'rgb(14,166,197)', marginBottom: '10px' }} className="btn btn-lg newDogBtn" variant="primary" onClick={() => this.loadModal2()}>New Dog</Button>
+                    <AddEditDog show={this.state.modalShow2} onHide={modalClose2} />
+                    {button}
+                </div>)
         } else {
             newButtons = (<div className="buttonSpace">
-                {ddbutton}
                 {button}
             </div>)
         }
@@ -176,7 +177,8 @@ class DogListWidget extends Component {
         return (
             <div className="container">
                 <div className="buttonSpace">
-                    {newButtons} 
+                    {newButtons}
+
                 </div>
                 <table className="table table-striped">
                     <thead>
@@ -196,7 +198,7 @@ class DogListWidget extends Component {
                                 <th>{dog.playStyle}</th>
                                 <th>
                                     {dog.socialization.map((soc, i) => (
-                                        <Badge style={{marginRight:'5px'}}variant={this.checkprogress(soc)}> {soc.name}/{soc.duration}/{soc.ampm} </Badge>
+                                        <Badge style={{ marginRight: '5px' }} variant={this.checkprogress(soc)}> {soc.name}/{soc.duration}/{soc.ampm} </Badge>
                                     ))}
                                     {/* <CheckoutDog show={this.state.modalShow} onHide={modalClose} props={this.state.modalInfo} /> */}
                                 </th>

@@ -128,7 +128,8 @@ router.post(
     var userInfo = {
       email: req.user.email,
       id: req.user._id,
-      admin: req.user.admin
+      permissions: req.user.permissions,
+      name: req.user.name
     }
 
     res.send(userInfo);
@@ -148,6 +149,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/logout', (req, res) => {
   if (req.user) {
+    req.logout()
     res.send({ msg: 'logging out' })
   } else {
     res.send({ msg: 'no staff to log out' })

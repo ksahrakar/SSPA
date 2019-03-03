@@ -24,7 +24,7 @@ class LoginForm extends Component {
         event.preventDefault()
 
         let loginstaff = {
-            username: this.state.email,
+            username: this.state.email.toLowerCase(),
             password: this.state.password
         }
         if (this.state.email && this.state.password) {
@@ -32,13 +32,15 @@ class LoginForm extends Component {
                 if (res.status === 200) {
                     //call function to mark staff as active/available
                     this.updateUserActive(res.data.id)
-                    sessionStorage.setItem("admin", res.data.admin);
+                    // sessionStorage.setItem("admin", res.data.admin);
                     sessionStorage.setItem("id", res.data.id)
                     // update App.js state
                     this.props.updateStaff({
                         loggedIn: true,
                         username: res.data.email,
-                        id: res.data.id
+                        id: res.data.id,
+                        permissions: res.data.permissions,
+                        name: res.data.name
                     })
                     this.setState({
                         redirectTo: "/"
@@ -70,8 +72,6 @@ class LoginForm extends Component {
         if (this.state.errorMessage) {
             errorMessage = <div className="alert alert-warning" role="alert"> {this.state.errorMessage} </div>
         }
-
-
 
         if (this.state.redirectTo) {
             return <Redirect to={{ pathname: this.state.redirectTo }} />
