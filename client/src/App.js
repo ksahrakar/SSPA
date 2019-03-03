@@ -18,19 +18,18 @@ class App extends Component {
     this.state = {
       loggedIn: false,
       username: null,
-      id: null
+      id: null,
+      permissions: null,
+      name: null
     }
 
-    this.getStaff = this.getStaff.bind(this)
-    this.componentDidMount = this.componentDidMount.bind(this)
-    this.updateStaff = this.updateStaff.bind(this)
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getStaff()
   }
 
-  updateStaff(staffObject) {
+  updateStaff = (staffObject) => {
     this.setState(staffObject)
   }
 
@@ -44,7 +43,9 @@ class App extends Component {
           this.setState({
             loggedIn: true,
             username: res.data.staff.email,
-            id: res.data.staff.id
+            id: res.data.staff.id,
+            permissions: res.data.staff.permissions,
+            name: res.data.staff.name
           })
         } else {
           console.log("Get staff: no staff");
@@ -52,50 +53,52 @@ class App extends Component {
           this.setState({
             loggedIn: false,
             username: null,
-            id: null
+            id: null,
+            permissions: null,
+            name: null,
           })
-
         }
-
       })
   }
 
   render() {
-    if (this.state.loggedIn !== true) {
-      return (
-        <Router>
-          <div>
-            <Jumbotron />
-            <NavB updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
-            <Switch>
-              <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-              <Route path="/signup" render={() => <Signup signup={this.signup} updateStaff={this.updateStaff} />} />
-              <Route exact path="/" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-              <Route component={Nomatch} />
-            </Switch>
-          </div>
-        </Router>
-      )
-    } else {
-      return (
-        <Router>
-          <div>
-            <Jumbotron />
-            <NavB updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} />
-            <Switch>
-              <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
-              <Route path="/signup" render={() => <Signup signup={this.signup} />} />
-                <Route exact path="/" component={Home} />
-                <Route exact path="/dog/:id" component={Dog} />
-                <Route exact path="/doglist" component={Doglist} />
-                <Route exact path="/stafflist" component={StaffList} />
-                <Route exact path="/staff/:id" component={Staff} />
-                <Route component={Nomatch} />
-            </Switch>
-          </div>
-        </Router>
-      )
-    }
+
+    return (
+      <Router>
+        <div>
+          <Jumbotron />
+
+          <NavB updateStaff={this.updateStaff} id={this.state.id} loggedIn={this.state.loggedIn} name={this.state.name} />
+
+          <Switch>
+            {/* LOG IN PAGE - pass updateStaff component*/}
+            <Route path="/login" render={() => <LoginForm updateStaff={this.updateStaff} />} />
+
+            {/* SIGN UP PAGE  - pass updateStaff component */}
+            <Route path="/signup" render={() => <Signup signup={this.signup} updateStaff={this.updateStaff} />} />
+
+            {/* HOME PAGE - not logged in goes to LOGIN */}
+            <Route exact path="/" render={() => <Home loggedIn={this.state.loggedIn} permissions={this.state.permissions} />} />
+
+            {/* SPECIFIC DOG - pass login and permissions */}
+            <Route exact path="/dog/:id" render={({ match }) => <Dog loggedIn={this.state.loggedIn} permissions={this.state.permissions} id={match.params.id} />} />
+
+            {/* DOG LIST - pass login and permissions */}
+            <Route exact path="/doglist" render={() => <Doglist loggedIn={this.state.loggedIn} permissions={this.state.permissions} />} />
+
+            {/* STAFF LIST - pass login and permissions */}
+            <Route exact path="/stafflist" render={() => <StaffList loggedIn={this.state.loggedIn} permissions={this.state.permissions} />} />
+
+            {/* SPECIFIC STAFF - pass login and permissions */}
+            <Route exact path="/staff/:id" render={({ match }) => <Staff loggedIn={this.state.loggedIn} permissions={this.state.permissions} id={match.params.id} />} />
+
+            {/* 404 page! */}
+            <Route component={Nomatch} />
+
+          </Switch>
+        </div>
+      </Router>
+    )
   }
 }
 

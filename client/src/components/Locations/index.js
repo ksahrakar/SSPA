@@ -7,12 +7,13 @@ import Button from "react-bootstrap/Button";
 class Locations extends Component {
     state = {
         dogs: [],
-        staff: []
+        staff: [],
+        permissions: null,
     }
-
 
     componentDidMount() {
         this.pullcurrentLocation();
+        this.setState({ permissions: this.props.permissions })
     };
 
     pullcurrentLocation = () => {
@@ -160,9 +161,9 @@ class Locations extends Component {
                                 </table>
                                 : "NO CURRENT STAFF"}
                         </div>
-                        
+
                         {/* Refresh button */}
-                        <Button style={{backgroundColor:'rgb(14,166,197)',padding:'5px'}} size="lg" className="btn" bg="dark" variant="warning" onClick={() => this.resetSocDone(this.state.dogs)} block> Refresh Data
+                        <Button style={{ backgroundColor: 'rgb(14,166,197)', padding: '5px' }} size="lg" className="btn" bg="dark" variant="warning" onClick={() => this.resetSocDone(this.state.dogs)} block> Refresh Data
                         </Button>
 
                         {/* North Concrete */}

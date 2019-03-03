@@ -29,9 +29,9 @@ const staffSchema = new Schema({
         type: Boolean,
         default: false
     },
-    admin: {
-        type: Boolean,
-        default: false,
+    permissions: {
+        type: String,
+        default: "user",
         required: true
     }
 });
