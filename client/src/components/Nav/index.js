@@ -10,7 +10,6 @@ class NavB extends Component {
         super()
         this.state = {
 
-
         }
     };
 
@@ -29,7 +28,7 @@ class NavB extends Component {
                     name: null
                 })
             }
-        }).then(window.location.replace("/")).catch(error => {
+        }).then(window.location.replace("/login")).catch(error => {
             console.log('Logout error...' + error)
         })
     }
